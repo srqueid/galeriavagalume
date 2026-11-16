@@ -1,0 +1,953 @@
+<!-- wp:html -->
+<style>
+/* Reset and override Astra defaults on homepage */
+body.home .site-header, 
+body.home #masthead,
+body.home .site-footer,
+body.home #colophon {
+    display: none !important;
+}
+body.home #primary,
+body.home #content,
+body.home .ast-container,
+body.home .site-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+body.home .entry-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+:root {
+    --gv-taupe: #ab8d7f;
+    --gv-taupe-dark: #8e7164;
+    --gv-taupe-light: #f5f0ed;
+    --gv-sage: #b7c6b7;
+    --gv-sage-dark: #374a38;
+    --gv-teal: #04444d;
+    --gv-gold: #d4b36a;
+    --gv-dark: #222222;
+    --gv-gray: #666666;
+    --gv-green: #0b3829;
+}
+
+.gv-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--gv-dark);
+    background-color: #ffffff;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.gv-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* 1. Header */
+.gv-top-bar {
+    background-color: var(--gv-taupe);
+    height: 24px;
+    width: 100%;
+}
+.gv-header {
+    background-color: #ffffff;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ede8e5;
+}
+.gv-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto 10px auto;
+    position: relative;
+}
+.gv-btn-menu {
+    background-color: var(--gv-taupe);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.gv-btn-menu:hover {
+    background-color: var(--gv-taupe-dark);
+}
+.gv-logo-box {
+    background-color: var(--gv-taupe);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 6px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+}
+.gv-search-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.gv-search-form {
+    display: flex;
+    width: 100%;
+}
+.gv-search-input {
+    width: 100%;
+    background-color: var(--gv-taupe);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #ffffff;
+    font-size: 14px;
+    font-style: italic;
+    outline: none;
+    transition: background 0.2s;
+}
+.gv-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.85);
+    font-style: italic;
+}
+.gv-search-input:focus {
+    background-color: var(--gv-taupe-dark);
+}
+
+.gv-mobile-drawer {
+    display: none;
+    background: #ffffff;
+    border: 1px solid #e0d7d2;
+    border-radius: 6px;
+    margin: 10px auto 0 auto;
+    max-width: 900px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.gv-mobile-drawer.open {
+    display: block;
+}
+.gv-mobile-drawer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+}
+.gv-mobile-drawer li a {
+    color: var(--gv-dark);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    display: block;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.gv-mobile-drawer li a:hover {
+    background: var(--gv-taupe-light);
+    color: var(--gv-taupe-dark);
+}
+
+/* 2. Hero Banner */
+.gv-hero-banner {
+    position: relative;
+    background: #f7f3f0;
+    overflow: hidden;
+    border-bottom: 1px solid #e8e2de;
+}
+.gv-hero-carousel-container {
+    position: relative;
+    max-width: 1140px;
+    margin: 0 auto;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+}
+.gv-hero-slide {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 40px 20px 30px 20px;
+}
+.gv-hero-bg-crop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.95;
+}
+.gv-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.gv-hero-text-left {
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(4px);
+    padding: 20px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+}
+.gv-hero-text-left h2 {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #3b2a22;
+    margin: 0;
+    font-weight: 600;
+}
+.gv-hero-offer-right {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    padding: 18px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    text-align: right;
+    margin-bottom: 20px;
+}
+.gv-hero-offer-right .gv-discount {
+    font-size: 32px;
+    font-weight: 800;
+    color: #4a3429;
+    line-height: 1;
+    margin: 0 0 4px 0;
+}
+.gv-hero-offer-right .gv-discount span {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gv-taupe-dark);
+}
+.gv-hero-offer-right .gv-installments {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 2px 0;
+    font-weight: 600;
+}
+.gv-hero-offer-right .gv-subtext {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}
+.gv-hero-watermark {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1px;
+}
+.gv-carousel-controls {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 3;
+}
+.gv-dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--gv-taupe);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.gv-dot.active {
+    background: var(--gv-taupe);
+    transform: scale(1.2);
+}
+
+/* 3. Differentials Bar */
+.gv-differentials {
+    background-color: #faf8f7;
+    border-top: 1px solid #eee8e5;
+    border-bottom: 1px solid #eee8e5;
+    padding: 16px 0;
+}
+.gv-diff-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+}
+.gv-diff-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+}
+.gv-diff-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a3830;
+}
+.gv-diff-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+.gv-diff-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #55443c;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* 4. Arte com Alma Brasileira */
+.gv-alma-section {
+    padding: 40px 16px 50px 16px;
+    text-align: center;
+    background-color: #ffffff;
+}
+.gv-pill-badge {
+    display: inline-block;
+    background-color: var(--gv-sage);
+    color: var(--gv-sage-dark);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+.gv-alma-desc {
+    max-width: 680px;
+    margin: 0 auto 24px auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444444;
+}
+.gv-alma-subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #222222;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+.gv-collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.gv-collection-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+}
+.gv-collection-card:hover {
+    transform: translateY(-4px);
+}
+.gv-collection-img-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background-color: #f0ebe8;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
+}
+.gv-collection-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.gv-collection-caption {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #333333;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* 5. As Mais Vendidas */
+.gv-bestsellers-section {
+    background-color: var(--gv-taupe);
+    padding: 40px 16px;
+    color: #ffffff;
+    text-align: center;
+}
+.gv-bestsellers-title {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    margin: 0 0 24px 0;
+    color: #ffffff;
+    font-weight: normal;
+}
+.gv-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.gv-product-card {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+    color: var(--gv-dark);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    text-decoration: none;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.gv-product-card:hover {
+    transform: translateY(-4px);
+}
+.gv-product-thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background: #f7f7f7;
+}
+.gv-product-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: #222222;
+}
+.gv-product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gv-taupe-dark);
+    margin: 0 0 12px 0;
+}
+.gv-btn-buy {
+    background-color: var(--gv-taupe);
+    color: #ffffff !important;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto;
+    transition: background 0.2s;
+}
+.gv-btn-buy:hover {
+    background-color: var(--gv-taupe-dark);
+}
+
+/* 6. Conjuntos de Quadros */
+.gv-conjuntos-section {
+    background-color: var(--gv-taupe);
+    padding: 50px 16px;
+    color: #ffffff;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+.gv-conjuntos-title {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 24px;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+}
+.gv-conjuntos-banner-tag {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    margin: 8px 0;
+    line-height: 1.1;
+}
+.gv-conjuntos-sugestoes {
+    font-size: 16px;
+    font-style: italic;
+    color: #f7ede8;
+    margin: 8px 0 16px 0;
+}
+.gv-conjuntos-note {
+    font-size: 13px;
+    font-style: italic;
+    color: #e5d3cb;
+    margin: 0;
+}
+
+/* 7. Por Que Escolher (Teal Banner) */
+.gv-why-section {
+    background-color: var(--gv-teal);
+    color: #ffffff;
+    position: relative;
+    padding: 50px 20px 40px 20px;
+    overflow: hidden;
+}
+.gv-why-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    gap: 30px;
+}
+.gv-why-left {
+    max-width: 440px;
+}
+.gv-why-sub {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+}
+.gv-why-title {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 4px 0 6px 0;
+    line-height: 1.1;
+}
+.gv-why-sub-bottom {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+}
+.gv-why-right {
+    max-width: 460px;
+}
+.gv-why-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.gv-why-list li {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gv-gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.gv-why-list li::before {
+    content: "•";
+    font-size: 16px;
+    color: var(--gv-gold);
+}
+.gv-why-image-crop {
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto 0 auto;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* 8. Footer */
+.gv-footer {
+    background-color: #ffffff;
+    padding: 50px 20px 30px 20px;
+    color: var(--gv-dark);
+    border-top: 1px solid #eee;
+}
+.gv-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.gv-footer-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+    color: #111111;
+}
+.gv-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.gv-footer-links li {
+    margin-bottom: 8px;
+}
+.gv-footer-links a {
+    color: #444444;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+.gv-footer-links a:hover {
+    color: var(--gv-taupe-dark);
+}
+.gv-contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.gv-contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 10px;
+}
+.gv-contact-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: var(--gv-green);
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.gv-payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+.gv-pay-badge {
+    background-color: var(--gv-green);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 26px;
+    text-transform: uppercase;
+}
+.gv-copy-row {
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+    margin-top: 40px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .gv-diff-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .gv-diff-item:last-child {
+        grid-column: span 2;
+    }
+    .gv-collections-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+    .gv-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .gv-why-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .gv-why-list li {
+        justify-content: center;
+    }
+    .gv-hero-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .gv-hero-text-left, .gv-hero-offer-right {
+        text-align: center;
+        max-width: 100%;
+    }
+    .gv-hero-watermark {
+        font-size: 18px;
+        margin-top: 40px;
+    }
+}
+</style>
+
+<div class="gv-wrapper">
+    <div class="gv-top-bar"></div>
+
+    <header class="gv-header">
+        <div class="gv-header-row">
+            <button class="gv-btn-menu" id="gvMenuToggle" onclick="document.getElementById('gvDrawer').classList.toggle('open')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                MENU
+            </button>
+            <a href="https://galeriavagalume.com.br/" class="gv-logo-box">
+                LOGO
+            </a>
+        </div>
+        <div class="gv-search-wrap">
+            <form class="gv-search-form" action="https://galeriavagalume.com.br/" method="get">
+                <input class="gv-search-input" type="search" name="s" placeholder="espaço p pesquisa" autocomplete="off" />
+            </form>
+        </div>
+        <div class="gv-mobile-drawer" id="gvDrawer">
+            <ul>
+                <li><a href="https://galeriavagalume.com.br/shop/">• Escolha por Categoria</a></li>
+                <li><a href="https://galeriavagalume.com.br/product-category/accessories/">• Fine-art</a></li>
+                <li><a href="https://galeriavagalume.com.br/product-category/bottoms/">• Fotografias</a></li>
+                <li><a href="https://galeriavagalume.com.br/product-category/dresses/">• Impressão em Canvas</a></li>
+                <li><a href="https://galeriavagalume.com.br/product-category/footwear/">• Edições Limitadas</a></li>
+                <li><a href="https://galeriavagalume.com.br/new-arrivals/">• O que tem de mais novo</a></li>
+                <li><a href="https://galeriavagalume.com.br/collection/">• Coleções</a></li>
+                <li><a href="https://galeriavagalume.com.br/about/">• Quem Somos</a></li>
+                <li><a href="https://galeriavagalume.com.br/contact/">• Fale Conosco</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="gv-hero-banner">
+        <div class="gv-hero-carousel-container">
+            <img class="gv-hero-bg-crop" src="data:image/jpeg;base64,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" alt="Galeria Vagalume Banner" />
+            <div class="gv-hero-slide">
+                <div class="gv-hero-content">
+                    <div class="gv-hero-text-left">
+                        <h2>Transforme sua casa com estilo, conheça as coleções exclusivas da Galeria Vagalume</h2>
+                    </div>
+                    <div class="gv-hero-offer-right">
+                        <p class="gv-discount">10% OFF <span>no Pix</span></p>
+                        <p class="gv-installments">ou até em 10x sem juros</p>
+                        <p class="gv-subtext">na compra de qualquer quadro</p>
+                    </div>
+                </div>
+                <div class="gv-hero-watermark">
+                    04 artes banners ( carrossel )
+                </div>
+            </div>
+            <div class="gv-carousel-controls">
+                <span class="gv-dot active"></span>
+                <span class="gv-dot"></span>
+                <span class="gv-dot"></span>
+                <span class="gv-dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="gv-differentials">
+        <div class="gv-container">
+            <div class="gv-diff-grid">
+                <div class="gv-diff-item">
+                    <div class="gv-diff-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 14H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1z"/></svg>
+                    </div>
+                    <p class="gv-diff-text">Compre direto<br>da fábrica</p>
+                </div>
+                <div class="gv-diff-item">
+                    <div class="gv-diff-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H1v13h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    </div>
+                    <p class="gv-diff-text">Frete grátis compras<br>acima de R$ 199</p>
+                </div>
+                <div class="gv-diff-item">
+                    <div class="gv-diff-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-10-7l-3 4h10l-4-5-3 3.5z"/></svg>
+                    </div>
+                    <p class="gv-diff-text">Molduras e papéis<br>de primeira qualidade</p>
+                </div>
+                <div class="gv-diff-item">
+                    <div class="gv-diff-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 8.5L4.7 7 12 3.5 19.3 7 12 10.5zm-8 4.2V19l8 4 8-4v-4.3l-8 4-8-4z"/></svg>
+                    </div>
+                    <p class="gv-diff-text">Envio seguro assegurado<br>pelos correios</p>
+                </div>
+                <div class="gv-diff-item">
+                    <div class="gv-diff-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                    </div>
+                    <p class="gv-diff-text">Satisfação<br>7 dias</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gv-alma-section">
+        <div class="gv-container">
+            <span class="gv-pill-badge">ARTE COM ALMA BRASILEIRA</span>
+            <p class="gv-alma-desc">
+                Nossas composições vão transformar seus ambientes com harmonia, conheça as artes exclusivas com a cara do Brasil criadas por nossos artistas além de grandes obras clássicas de pintores famosos de todo o mundo.
+            </p>
+            <h3 class="gv-alma-subtitle">CONHEÇA NOSSAS COLEÇÕES</h3>
+            <div class="gv-collections-grid">
+                <a href="https://galeriavagalume.com.br/product-category/bottoms/" class="gv-collection-card">
+                    <div class="gv-collection-img-wrap">
+                        <img src="data:image/jpeg;base64,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" alt="Fotografias Exclusivas Assinadas" />
+                    </div>
+                    <p class="gv-collection-caption">Mais de 100 fotografias exclusivas assinadas.</p>
+                </a>
+                <a href="https://galeriavagalume.com.br/product-category/dresses/" class="gv-collection-card">
+                    <div class="gv-collection-img-wrap">
+                        <img src="data:image/jpeg;base64,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" alt="Ilustrações Exclusivas Artistas Digitais" />
+                    </div>
+                    <p class="gv-collection-caption">Ilustrações exclusivas criadas por nossos artistas digitais.</p>
+                </a>
+                <a href="https://galeriavagalume.com.br/product-category/accessories/" class="gv-collection-card">
+                    <div class="gv-collection-img-wrap">
+                        <img src="data:image/jpeg;base64,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" alt="Quadros de Pintores Famosos" />
+                    </div>
+                    <p class="gv-collection-caption">Os maiores quadros de pintores famosos nas mais fiéis telas originais.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="gv-bestsellers-section">
+        <div class="gv-container">
+            <h2 class="gv-bestsellers-title">As mais vendidas</h2>
+            <div class="gv-products-grid">
+                <div class="gv-product-card">
+                    <img class="gv-product-thumb" src="https://galeriavagalume.com.br/wp-content/uploads/2025/11/quadro-na-sala.png" alt="Quadro Para Casa" />
+                    <h3 class="gv-product-name">Quadro Para Casa</h3>
+                    <p class="gv-product-price">R$ 1.512,00</p>
+                    <a href="https://galeriavagalume.com.br/product/para-casa/" class="gv-btn-buy">Ver Detalhes</a>
+                </div>
+                <div class="gv-product-card">
+                    <img class="gv-product-thumb" src="data:image/jpeg;base64,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" alt="Série Crepúsculo Marítimo" />
+                    <h3 class="gv-product-name">Fotografia Crepúsculo</h3>
+                    <p class="gv-product-price">R$ 380,00</p>
+                    <a href="https://galeriavagalume.com.br/shop/" class="gv-btn-buy">Ver Detalhes</a>
+                </div>
+                <div class="gv-product-card">
+                    <img class="gv-product-thumb" src="data:image/jpeg;base64,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" alt="Ilustração Alma Brasileira" />
+                    <h3 class="gv-product-name">Alma Brasileira</h3>
+                    <p class="gv-product-price">R$ 420,00</p>
+                    <a href="https://galeriavagalume.com.br/shop/" class="gv-btn-buy">Ver Detalhes</a>
+                </div>
+                <div class="gv-product-card">
+                    <img class="gv-product-thumb" src="data:image/jpeg;base64,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" alt="O Nascimento de Vênus" />
+                    <h3 class="gv-product-name">Nascimento de Vênus</h3>
+                    <p class="gv-product-price">R$ 490,00</p>
+                    <a href="https://galeriavagalume.com.br/shop/" class="gv-btn-buy">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gv-conjuntos-section">
+        <div class="gv-container">
+            <h2 class="gv-conjuntos-title">Conjuntos de quadros</h2>
+            <div class="gv-conjuntos-banner-tag">01 ARTE BANNER</div>
+            <p class="gv-conjuntos-sugestoes">conheça nossas lindas sugestões de composição</p>
+            <p class="gv-conjuntos-note">esta informação estará no rodapé da pagina das coleções</p>
+        </div>
+    </section>
+
+    <section class="gv-why-section">
+        <div class="gv-why-container">
+            <div class="gv-why-left">
+                <p class="gv-why-sub">POR QUE ESCOLHER UM</p>
+                <h2 class="gv-why-title">QUADRO</h2>
+                <p class="gv-why-sub-bottom">DA GALERIA VAGALUME?</p>
+            </div>
+            <div class="gv-why-right">
+                <ul class="gv-why-list">
+                    <li>ENTREGA SEGURA GARANTIDA PELOS CORREIOS</li>
+                    <li>ALTA QUALIDADE NO PROCESSO DE PRODUÇÃO</li>
+                    <li>CONSULTORIA GRATUITA</li>
+                    <li>MOLDURAS</li>
+                </ul>
+            </div>
+        </div>
+        <img class="gv-why-image-crop" src="data:image/jpeg;base64,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" alt="Por que escolher Galeria Vagalume" />
+    </section>
+
+    <footer class="gv-footer">
+        <div class="gv-footer-grid">
+            <div class="gv-footer-col">
+                <ul class="gv-footer-links">
+                    <li><a href="https://galeriavagalume.com.br/about/">Quem somos</a></li>
+                    <li><a href="https://galeriavagalume.com.br/politica-de-devolucao/">Políticas de devolução</a></li>
+                    <li><a href="https://galeriavagalume.com.br/politica-de-entrega/">Políticas de entrega</a></li>
+                </ul>
+            </div>
+            <div class="gv-footer-col">
+                <h4>ENTRE EM CONTATO</h4>
+                <ul class="gv-contact-list">
+                    <li><span class="gv-contact-bullet"></span> <a href="tel:61995528001" style="color:inherit; text-decoration:none;">61995528001</a></li>
+                    <li><span class="gv-contact-bullet"></span> <a href="https://wa.me/5561995528001" target="_blank" style="color:inherit; text-decoration:none;">(61) 99552 8001</a></li>
+                    <li><span class="gv-contact-bullet"></span> <a href="mailto:atendimento@galeriavagalume.com.br" style="color:inherit; text-decoration:none;">atendimento@galeriavagalume.com.br</a></li>
+                </ul>
+            </div>
+            <div class="gv-footer-col">
+                <h4>MEIOS DE PAGAMENTO</h4>
+                <div class="gv-payment-icons">
+                    <span class="gv-pay-badge">PIX</span>
+                    <span class="gv-pay-badge">VISA</span>
+                    <span class="gv-pay-badge">MASTER</span>
+                    <span class="gv-pay-badge">BOLETO</span>
+                    <span class="gv-pay-badge">ELO</span>
+                </div>
+            </div>
+        </div>
+        <div class="gv-copy-row">
+            © 2026 Galeria Vagalume. Todos os direitos reservados.
+        </div>
+    </footer>
+</div>
+<!-- /wp:html -->
